@@ -35,8 +35,8 @@ jobs:
           done
           # Copy rime-frost files from submodule (symlinks don't work for nested dirs)
           rm -rf rime-frost
-          cp -r ../../data/rime/rime-frost rime-frost
-          rm -f rime-frost/.git rime-frost/.github -rf
+          cp -r ../../../data/rime/rime-frost rime-frost
+          rm -rf rime-frost/.git rime-frost/.github
 
       - name: Setup Java
         uses: actions/setup-java@v4
