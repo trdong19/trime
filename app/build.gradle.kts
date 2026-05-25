@@ -26,7 +26,7 @@ android {
 
     defaultConfig {
         applicationId = "com.trdong19.trime"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 35
         versionCode = 20260701
         versionName = "3.3.11"
