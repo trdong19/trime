@@ -1,4 +1,5 @@
 // SPDX-FileCopyrightText: 2015 - 2024 Rime community
+// force rebuild: JNI package name updated
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
