@@ -31,9 +31,6 @@ android {
         versionCode = 20260701
         versionName = "3.3.11"
 
-        ndk {
-            abiFilters += "arm64-v8a"
-        }
         multiDexEnabled = true
         buildConfigField("String", "BUILDER", "\"${project.builder}\"")
         buildConfigField("long", "BUILD_TIMESTAMP", project.buildTimestamp)
