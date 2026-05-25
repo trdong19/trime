@@ -23,19 +23,19 @@ jobs:
 
       - name: Fix symlinks
         run: |
-          # actions/checkout converts symlinks to regular files, recreate them
-          cd app/src/main/assets/shared
-          for f in $(find . -maxdepth 1 -type f -not -name "checksums.json"); do
+          SHARED="app/src/main/assets/shared"
+          # Recreate symlinks for existing rime submodules
+          for f in $(find "$SHARED" -maxdepth 1 -type f -not -name "checksums.json"); do
             target=$(head -c 200 "$f" | tr -d '\0')
             if echo "$target" | grep -q '^../../../../data/rime/'; then
               rm -f "$f"
               ln -sf "$target" "$f" || true
             fi
           done
-          # Copy rime-frost files from submodule (symlinks don't work for nested dirs)
-          rm -rf rime-frost
-          cp -r ../../../data/rime/rime-frost rime-frost
-          rm -rf rime-frost/.git rime-frost/.github
+          # Copy rime-frost files from submodule
+          rm -rf "$SHARED/rime-frost"
+          cp -r app/data/rime/rime-frost "$SHARED/rime-frost"
+          rm -rf "$SHARED/rime-frost/.git" "$SHARED/rime-frost/.github"
 
       - name: Setup Java
         uses: actions/setup-java@v4
