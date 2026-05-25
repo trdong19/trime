@@ -23,18 +23,13 @@ jobs:
 
       - name: Fix symlinks
         run: |
-          # Debug: check submodule state
-          ls -la app/data/rime/
-          ls -la app/data/rime/rime-frost/ | head -5 2>&1 || echo "rime-frost not found"
-          git submodule status app/data/rime/rime-frost
-          # actions/checkout converts symlinks to regular files
-          # Recreate symlinks for existing rime submodules (luna-pinyin, prelude, stroke, essay)
+          # actions/checkout converts symlinks to regular files, recreate them
           cd app/src/main/assets/shared
           for f in $(find . -maxdepth 1 -type f -not -name "checksums.json"); do
             target=$(head -c 200 "$f" | tr -d '\0')
             if echo "$target" | grep -q '^../../../../data/rime/'; then
               rm -f "$f"
-              ln -sf "$target" "$f"
+              ln -sf "$target" "$f" || true
             fi
           done
           # Copy rime-frost files from submodule (symlinks don't work for nested dirs)
