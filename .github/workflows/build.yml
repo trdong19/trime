@@ -21,6 +21,18 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Fix symlinks
+        run: |
+          # actions/checkout does not preserve symlinks, recreate them
+          cd app/src/main/assets/shared
+          find . -type f -not -path "./checksums.json" | while read f; do
+            target=$(cat "$f")
+            if [[ "$target" == ../../* ]]; then
+              rm "$f"
+              ln -sf "$target" "$f"
+            fi
+          done
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
