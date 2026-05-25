@@ -23,6 +23,10 @@ jobs:
 
       - name: Fix symlinks
         run: |
+          # Debug: check submodule state
+          ls -la app/data/rime/
+          ls -la app/data/rime/rime-frost/ | head -5 2>&1 || echo "rime-frost not found"
+          git submodule status app/data/rime/rime-frost
           # actions/checkout converts symlinks to regular files
           # Recreate symlinks for existing rime submodules (luna-pinyin, prelude, stroke, essay)
           cd app/src/main/assets/shared
