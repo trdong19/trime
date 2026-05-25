@@ -43,6 +43,15 @@ jobs:
           print('Symlinks restored')
           "
 
+      - name: Verify symlinks
+        run: |
+          ls -la app/src/main/assets/shared/rime-frost/ | head -5
+          ls -la app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml
+          file app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml
+          readlink app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml
+          ls -la app/data/rime/rime-frost/bopomofo.schema.yaml
+          cat app/data/rime/rime-frost/bopomofo.schema.yaml | head -3
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
