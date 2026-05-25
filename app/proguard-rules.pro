@@ -9,7 +9,7 @@
 -dontobfuscate
 
 # Keep JNI interface
--keep class com.osfans.trime.core.* { *; }
+-keep class com.trdong19.trime.core.* { *; }
 
 # remove kotlin null checks
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {

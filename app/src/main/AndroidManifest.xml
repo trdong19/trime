@@ -15,7 +15,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name="com.osfans.trime.TrimeApplication"
+        android:name="com.trdong19.trime.TrimeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_icon"
         android:label="@string/trime_app_name"
@@ -85,7 +85,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
         <!-- Using an activity alias to disable/enable the app icon in the launcher -->
         <activity-alias
-            android:name="com.osfans.trime.MainLauncherAlias"
+            android:name="com.trdong19.trime.MainLauncherAlias"
             android:exported="true"
             android:label="@string/trime_app_name"
             android:launchMode="singleTask"
