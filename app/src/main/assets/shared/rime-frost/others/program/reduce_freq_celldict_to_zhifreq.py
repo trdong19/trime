@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/reduce_freq_celldict_to_zhifreq.py

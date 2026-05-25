@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/deal_3zi_j.py

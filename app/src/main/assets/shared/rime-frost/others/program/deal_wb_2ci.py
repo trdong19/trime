@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/deal_wb_2ci.py

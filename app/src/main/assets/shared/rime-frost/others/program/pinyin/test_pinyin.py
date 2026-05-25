@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/pinyin/test_pinyin.py

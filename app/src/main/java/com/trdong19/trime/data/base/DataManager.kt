@@ -25,6 +25,10 @@ object DataManager {
     private const val SCHEMA_LIST_CUSTOM_PATCH = """
       patch:
         schema_list:
+          - schema: rime_frost
+          - schema: rime_frost_double_pinyin_flypy
+          - schema: rime_frost_t9
+          - schema: rime_frost_wubi86
           - schema: luna_pinyin
           - schema: luna_pinyin_simp
     """

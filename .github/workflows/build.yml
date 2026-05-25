@@ -8,6 +8,9 @@ on:
   push:
     branches: [develop]
 
+env:
+  CI_NAME: GitHub Actions
+
 jobs:
   build:
     runs-on: ubuntu-24.04

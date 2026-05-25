@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/script/rime/pinyin.go

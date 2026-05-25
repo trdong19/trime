@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/mnbvc/generate_custom_fenci_dict.py

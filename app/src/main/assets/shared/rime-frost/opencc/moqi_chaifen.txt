@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/opencc/moqi_chaifen.txt

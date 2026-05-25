@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/mnbvc/get_dict.py

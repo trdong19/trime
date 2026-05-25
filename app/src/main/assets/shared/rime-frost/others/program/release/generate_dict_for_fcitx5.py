@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/program/release/generate_dict_for_fcitx5.py

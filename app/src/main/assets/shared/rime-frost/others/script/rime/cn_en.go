@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/script/rime/cn_en.go

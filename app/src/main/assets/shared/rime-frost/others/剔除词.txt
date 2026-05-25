@@ -1,0 +1,1 @@
+../../../../data/rime/rime-frost/others/剔除词.txt
