@@ -23,27 +23,20 @@ jobs:
 
       - name: Fix symlinks
         run: |
-          # actions/checkout converts symlinks to regular files, recreate them
+          # actions/checkout converts symlinks to regular files
+          # Recreate symlinks for existing rime submodules (luna-pinyin, prelude, stroke, essay)
           cd app/src/main/assets/shared
-          find . -type f -not -name "checksums.json" | while read f; do
+          for f in $(find . -maxdepth 1 -type f -not -name "checksums.json"); do
             target=$(head -c 200 "$f" | tr -d '\0')
             if echo "$target" | grep -q '^../../../../data/rime/'; then
               rm -f "$f"
-              ln -sfn "$target" "$f"
+              ln -sf "$target" "$f"
             fi
           done
-
-      - name: Verify symlinks
-        run: |
-          echo "=== Symlink ==="
-          ls -la app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml 2>&1
-          file app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml 2>&1
-          readlink app/src/main/assets/shared/rime-frost/bopomofo.schema.yaml 2>&1
-          echo "=== Target ==="
-          ls -la app/data/rime/rime-frost/bopomofo.schema.yaml 2>&1
-          ls -la app/data/rime/rime-frost/ | head -5
-          echo "=== Resolve test ==="
-          cd app/src/main/assets/shared/rime-frost && ls -la bopomofo.schema.yaml && cat bopomofo.schema.yaml | head -3
+          # Copy rime-frost files from submodule (symlinks don't work for nested dirs)
+          rm -rf rime-frost
+          cp -r ../../data/rime/rime-frost rime-frost
+          rm -f rime-frost/.git rime-frost/.github -rf
 
       - name: Setup Java
         uses: actions/setup-java@v4
