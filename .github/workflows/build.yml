@@ -23,15 +23,25 @@ jobs:
 
       - name: Fix symlinks
         run: |
-          # actions/checkout does not preserve symlinks, recreate them
+          # actions/checkout converts symlinks to regular files, recreate them
           cd app/src/main/assets/shared
-          find . -type f -not -path "./checksums.json" | while read f; do
-            target=$(cat "$f")
-            if [[ "$target" == ../../* ]]; then
-              rm "$f"
-              ln -sf "$target" "$f"
-            fi
-          done
+          python3 -c "
+          import os, pathlib
+          for root, dirs, files in os.walk('.'):
+              for f in files:
+                  path = os.path.join(root, f)
+                  if f == 'checksums.json':
+                      continue
+                  try:
+                      with open(path, 'r') as fh:
+                          content = fh.read().strip()
+                      if content.startswith('../../../../data/rime/'):
+                          os.remove(path)
+                          os.symlink(content, path)
+                  except:
+                      pass
+          print('Symlinks restored')
+          "
 
       - name: Setup Java
         uses: actions/setup-java@v4
