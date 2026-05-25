@@ -18,6 +18,7 @@ open class NativeBaseConventionPlugin : Plugin<Project> {
                 externalNativeBuild {
                     cmake {
                         arguments("-DANDROID_STL=c++_static")
+                        arguments("-DCMAKE_C_FLAGS=-D_FILE_OFFSET_BITS=64")
                     }
                 }
             }
